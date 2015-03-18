@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ChuletonActivity"
+            android:label="@string/title_activity_chuleton"
+            android:parentActivityName=".LandingActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="es.alfongj.chuleton.LandingActivity" />
+        </activity>
     </application>
 
 </manifest>

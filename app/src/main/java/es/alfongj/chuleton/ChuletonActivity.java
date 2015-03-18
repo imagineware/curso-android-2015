@@ -1,5 +1,6 @@
 package es.alfongj.chuleton;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -49,12 +50,34 @@ public class ChuletonActivity extends ActionBarActivity {
         mSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Obtenemos el texto actual de la chuleta
                 String newChuleta = mChuletonEditText.getText().toString();
 
+                // Guardamos en SharedPreferences
                 mSharedPreferences.edit()
                         .putString(SP_CHULETA_KEY, newChuleta)
                         .apply();
 
+            }
+        });
+
+        mShareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtenemos el texto actual de la chuleta
+                String newChuleta = mChuletonEditText.getText().toString();
+
+                // Creamos un nuevo intent con la intención de mandar (ACTION_SEND)...
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                // ... algo de tipo texto (text/plain)...
+                intent.setType("text/plain");
+                // .. que será el contenido de la chuleta
+                intent.putExtra(
+                        android.content.Intent.EXTRA_TEXT,
+                        newChuleta);
+
+                startActivity(
+                        Intent.createChooser(intent,"Dónde quiere guardar su chuleta?"));
             }
         });
     }

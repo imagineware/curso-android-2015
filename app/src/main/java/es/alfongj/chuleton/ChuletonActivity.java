@@ -45,7 +45,18 @@ public class ChuletonActivity extends ActionBarActivity {
         String currentChuleta = mSharedPreferences.getString(SP_CHULETA_KEY, "");
         // ... y actualizamos el contenido del EditText con ello
         mChuletonEditText.setText(currentChuleta);
-        
+
+        mSaveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newChuleta = mChuletonEditText.getText().toString();
+
+                mSharedPreferences.edit()
+                        .putString(SP_CHULETA_KEY, newChuleta)
+                        .apply();
+
+            }
+        });
     }
 
 }

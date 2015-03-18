@@ -1,5 +1,6 @@
 package es.alfongj.chuleton;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 
 public class LandingActivity extends ActionBarActivity {
+
+    static final String PASSWORD = "en mi plato";
 
     // Views
     EditText mPasswdEditText;
@@ -43,7 +46,16 @@ public class LandingActivity extends ActionBarActivity {
                 Toast.makeText(LandingActivity.this,
                         "Intento de desbloqueo con password: " + password,
                         Toast.LENGTH_SHORT).show();
+
+                if (PASSWORD.equals(password)) {
+                    navigateToChuletonActivity();
+                }
             }
         });
+    }
+
+    private void navigateToChuletonActivity() {
+        Intent i = new Intent(this, ChuletonActivity.class);
+        startActivity(i);
     }
 }

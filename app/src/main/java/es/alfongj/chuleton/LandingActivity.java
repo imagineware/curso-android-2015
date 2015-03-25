@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
 
 public class LandingActivity extends ActionBarActivity {
@@ -43,12 +45,14 @@ public class LandingActivity extends ActionBarActivity {
 
                 // ... y lo imprimimos por log y por pantalla
                 Log.d("LandingActivity", "Intento de desbloqueo con password: " + password);
-                Toast.makeText(LandingActivity.this,
-                        "Intento de desbloqueo con password: " + password,
-                        Toast.LENGTH_SHORT).show();
 
                 if (PASSWORD.equals(password)) {
                     navigateToChuletonActivity();
+                } else {
+                    Crouton.cancelAllCroutons();
+                    Crouton.makeText(LandingActivity.this,
+                            "Contraseña errónea",
+                            Style.ALERT).show();
                 }
             }
         });

@@ -25,4 +25,5 @@ dependencies {
     compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
         exclude group: 'com.google.android', module: 'support-v4'
     }
+    compile 'com.parse.bolts:bolts-android:1.+'
 }
